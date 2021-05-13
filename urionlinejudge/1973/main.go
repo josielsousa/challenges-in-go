@@ -9,13 +9,23 @@ import (
 var reader *bufio.Reader = bufio.NewReader(os.Stdin)
 var writer *bufio.Writer = bufio.NewWriter(os.Stdout)
 
-func printf(f string, a ...interface{})                   { fmt.Fprintf(writer, f, a...) }
-func scanf(f string, a ...interface{}) (n int, err error) { return fmt.Fscanf(reader, f, a...) }
+func printf(f string, a ...interface{}) { fmt.Fprintf(writer, f, a...) }
+func scanf(f string, a ...interface{})  { fmt.Fscanf(reader, f, a...) }
 
-// 1-- 2 -- 3 -- 4 -- 5 -- 6 -- 7 -- 8
+/**
 
-// Case shees on Star i == impar odd, then Star i + 1
-// Case shees on Star i == par even, then Star i - 1
+1-- 2 -- 3 -- 4 -- 5 -- 6 -- 7 -- 8
+
+farms := 8
+sheepsInFarm := []int64{1, 3, 5, 7, 11, 13, 17, 19}
+sheepsInFarm := []int64{1, 3, 5, 7, 11, 13, 16, 19}
+
+8
+1 3 5 7 11 13 16 19
+
+-- Case shees on Star i == impar odd, then Star i + 1
+-- Case shees on Star i == par even, then Star i - 1
+**/
 
 func main() {
 	defer writer.Flush()
@@ -23,20 +33,12 @@ func main() {
 	var farms int64
 	scanf("%d\n", &farms)
 
-	//farms := 8
-	//sheepsInFarm := []int64{1, 3, 5, 7, 11, 13, 17, 19}
-	//sheepsInFarm := []int64{1, 3, 5, 7, 11, 13, 16, 19}
-
 	totalNonStolenSheep := int64(0)
 	sheepsInFarm := make([]int64, farms)
 
 	i := int64(0)
 	for i < farms {
-		_, err := scanf("%d", &sheepsInFarm[i])
-		if err != nil {
-			scanf("%d", &sheepsInFarm[i])
-		}
-
+		scanf("%d", &sheepsInFarm[i])
 		totalNonStolenSheep += sheepsInFarm[i]
 		i++
 	}
