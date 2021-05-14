@@ -21,6 +21,9 @@ sheepsInFarm := []int64{1, 3, 5, 7, 11, 13, 17, 19}
 sheepsInFarm := []int64{1, 3, 5, 7, 11, 13, 16, 19}
 
 8
+1 3 5 7 11 13 17 19
+
+8
 1 3 5 7 11 13 16 19
 
 -- Case shees on Star i == impar odd, then Star i + 1
