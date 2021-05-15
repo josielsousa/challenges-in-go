@@ -1,8 +1,10 @@
+// This templates is based on  https://www.codementor.io/@tucnak/using-golang-for-competitive-programming-h8lhvxzt3
 package main
 
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -15,7 +17,13 @@ func scanf(f string, a ...interface{}) (n int, err error) { return fmt.Fscanf(re
 func main() {
 	defer writer.Flush()
 
-	var a, b int
-	scanf("%d %d\n", &a, &b)
-	printf("%d\n", a+b)
+	for {
+		var a, b uint32
+		_, err := scanf("%d %d\n", &a, &b)
+		if err != nil && err == io.EOF {
+			break
+		}
+
+		printf("%d\n", a^b)
+	}
 }
