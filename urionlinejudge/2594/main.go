@@ -19,19 +19,31 @@ func main() {
 	var qtd int
 	scanf("%d\n", &qtd)
 
-	scanner := bufio.NewScanner(os.Stdin)
+	//scanner := bufio.NewScanner(os.Stdin)
 
 	count := 0
 	for count < qtd {
 		count++
 
-		scanner.Scan()
-		text := scanner.Text()
+		// scanner.Scan()
+		val, _, err := reader.ReadLine()
+		if err != nil {
+			fmt.Println("Error on get text: ", err)
+		}
 
-		scanner.Scan()
-		word := scanner.Text()
+		text := string(val)
+		// scanner.Scan()
+		// word := scanner.Text()
 
-		exp := regexp.MustCompile(fmt.Sprintf("\\b%s\\b", string(word)))
+		val, _, err = reader.ReadLine()
+		if err != nil {
+			fmt.Println("Error on get word: ", err)
+		}
+
+		word := string(val)
+
+		//printf("%s\n", fmt.Sprintf("\\b%s\\b", word))
+		exp := regexp.MustCompile(fmt.Sprintf("\\b%s\\b", word))
 		matchs := exp.FindAllStringIndex(text, -1)
 
 		if len(matchs) <= 0 {
@@ -39,14 +51,21 @@ func main() {
 			continue
 		}
 
+		exit := ""
 		for i, match := range matchs {
 			if i == 0 {
-				printf("%d ", match[0])
+				exit += fmt.Sprintf("%d", match[0])
 			} else {
-				printf(" %d ", match[0])
+				exit += fmt.Sprintf(" %d", match[0])
 			}
 		}
 
-		printf("\n")
+		printf("%s\n", exit)
 	}
 }
+
+/**
+6
+43 53
+63
+*/
