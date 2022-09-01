@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func romanToInt(s string) int {
 	romans := map[string]int{
 		"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000,
@@ -27,14 +25,4 @@ func romanToInt(s string) int {
 	}
 
 	return sum
-}
-
-func main() {
-	fmt.Println(romanToInt("MCMXCIV")) // 1994
-
-	fmt.Println(romanToInt("IV"))	// 4
-	fmt.Println(romanToInt("IX"))   // 9
-
-	fmt.Println(romanToInt("LVIII")) // 58
-	fmt.Println(romanToInt("XXVII")) // 27
 }
